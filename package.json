@@ -1,0 +1,43 @@
+{
+  "name": "project-seed-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:typescript",
+    "build:typescript": "tsc",
+    "fix": "npm run lint:tslint:fix;npm run lint:prettier:fix",
+    "lint": "npm run lint:tslint; npm run lint:prettier",
+    "lint:typescript": "tsc --noEmit",
+    "lint:typescript:watch": "tsc --watch",
+    "lint:tslint": "tslint -p . -c ./tslint.json",
+    "lint:tslint:fix": "tslint -p . -c ./tslint.json --fix",
+    "lint:prettier": "prettier --check './**/*.js'",
+    "lint:prettier:fix": "prettier --write './**/*.js'",
+    "test": "./node_modules/.bin/jest",
+    "test:watch": "./node_modules/.bin/jest --watch ./functions/*/src/test/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/.*\\.test\\.ts$"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.7",
+    "jest": "^24.7.1",
+    "prettier": "^1.17.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {}
+}
