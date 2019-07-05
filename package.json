@@ -4,18 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:typescript",
-    "build:typescript": "tsc",
-    "fix": "npm run lint:tslint:fix;npm run lint:prettier:fix",
-    "lint": "npm run lint:tslint; npm run lint:prettier",
-    "lint:typescript": "tsc --noEmit",
-    "lint:typescript:watch": "tsc --watch",
-    "lint:tslint": "tslint -p . -c ./tslint.json",
-    "lint:tslint:fix": "tslint -p . -c ./tslint.json --fix",
-    "lint:prettier": "prettier --check './**/*.js'",
-    "lint:prettier:fix": "prettier --write './**/*.js'",
-    "test": "./node_modules/.bin/jest",
-    "test:watch": "./node_modules/.bin/jest --watch ./functions/*/src/test/*.test.js"
+    "build:parcel:server": "parcel build -t node -d lib src/index.ts",
+    "build": "yarn clean; yarn build:parcel:server",
+    "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
+    "lint:eslint": "eslint './**/*.ts' './**/*.tsx'",
+    "lint:fix:eslint": "eslint './**/*.ts' './**/*.tsx' --fix",
+    "lint:fix:prettier": "prettier --write './**/*.ts'",
+    "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
+    "lint:prettier": "prettier --check './**/*.ts'",
+    "lint:typescript": "tsc -p . --noEmit",
+    "lint": "yarn lint:typescript; yarn lint:eslint; yarn lint:prettier",
+    "test:watch": "jest  --watchAll",
+    "test": "jest",
+    "types": "npx typesync; yarn"
   },
   "author": "",
   "license": "ISC",
@@ -25,19 +26,63 @@
       "js"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.(ts|tsx)$": "ts-jest"
     },
-    "testRegex": "/.*\\.test\\.ts$"
+    "testMatch": [
+      "**/*.steps.ts",
+      "**/*.test.ts"
+    ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,jsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.13.7",
-    "jest": "^24.7.1",
-    "prettier": "^1.17.0",
+    "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/babel__core": "^7.1.2",
+    "@types/chai": "^4.1.7",
+    "@types/eslint": "^4.16.6",
+    "@types/eslint-plugin-prettier": "^2.2.0",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.12",
+    "@types/node-sass": "^4.11.0",
+    "@types/parcel-bundler": "^1.12.0",
+    "@types/prettier": "^1.16.4",
+    "@types/sinon": "^7.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "babel-plugin-transform-typescript-metadata": "^0.2.2",
+    "chai": "^4.2.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "firebase-functions-test": "^0.1.6",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "jest-cucumber": "^2.0.11",
+    "lint-staged": "^9.0.2",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-babel-typescript": "^1.0.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "sinon": "^7.3.2",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.16.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.5"
-  },
-  "dependencies": {}
+    "typescript": "^3.5.2"
+  }
 }

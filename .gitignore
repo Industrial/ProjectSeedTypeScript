@@ -1,3 +1,13 @@
-.idea
+# temporary files
+.cache
+
+# library code
+lib
 node_modules
-src/**/*.js
+
+# generated files
+src/client/imported.ts
+
+# secret files
+serviceAccountKey.json
+applicationConfiguration.json
