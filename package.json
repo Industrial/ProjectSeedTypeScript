@@ -7,8 +7,8 @@
     "build:parcel:server": "parcel build -t node -d lib src/index.ts",
     "build": "yarn clean; yarn build:parcel:server",
     "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
-    "lint:eslint": "eslint './**/*.ts' './**/*.tsx'",
-    "lint:fix:eslint": "eslint './**/*.ts' './**/*.tsx' --fix",
+    "lint:eslint": "eslint './**/*.ts'",
+    "lint:fix:eslint": "eslint './**/*.ts' --fix",
     "lint:fix:prettier": "prettier --write './**/*.ts'",
     "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
     "lint:prettier": "prettier --check './**/*.ts'",
@@ -48,7 +48,7 @@
       "git add"
     ]
   },
-  "dependencies": {},
+  "dependenies": {},
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
@@ -60,7 +60,6 @@
     "@types/eslint-plugin-prettier": "^2.2.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.0.12",
-    "@types/node-sass": "^4.11.0",
     "@types/parcel-bundler": "^1.12.0",
     "@types/prettier": "^1.16.4",
     "@types/sinon": "^7.0.13",
@@ -71,8 +70,6 @@
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2",
-    "firebase-functions-test": "^0.1.6",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "jest-cucumber": "^2.0.11",
@@ -80,7 +77,6 @@
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-babel-typescript": "^1.0.1",
     "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1",
     "sinon": "^7.3.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"

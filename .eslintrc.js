@@ -1,12 +1,14 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
   extends: [
-    'plugin:react/recommended',
-    // 'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    // 'plugin:react/recommended',
   ],
   parserOptions: {
+    project: './tsconfig.json',
     sourceType: 'module',
     ecmaVersion: 2019,
     ecmaFeatures: {
@@ -14,18 +16,18 @@ module.exports = {
     },
   },
   rules: {
-    '@typescript-eslint/arrow-parens': [true],
-    '@typescript-eslint/await-promise': [true],
-    '@typescript-eslint/max-classes-per-file': false,
-    '@typescript-eslint/no-console': [false],
-    '@typescript-eslint/no-floating-promises': [true],
-    '@typescript-eslint/object-literal-key-quotes': [false],
-    '@typescript-eslint/object-literal-sort-keys': [false],
-    '@typescript-eslint/ordered-imports': [false],
-    '@typescript-eslint/quotemark': [true, 'single', 'avoid-escape'],
-    '@typescript-eslint/semicolon': [true, 'never'],
-    '@typescript-eslint/trailing-comma': [true],
-    'jsx-quotes': ['error', 'prefer-single'],
+    '@typescript-eslint/arrow-parens': [2],
+    '@typescript-eslint/await-promise': [2],
+    '@typescript-eslint/max-classes-per-file': [0],
+    '@typescript-eslint/no-console': [0],
+    '@typescript-eslint/no-floating-promises': [2],
+    '@typescript-eslint/object-literal-key-quotes': [0],
+    '@typescript-eslint/object-literal-sort-keys': [0],
+    '@typescript-eslint/ordered-imports': [0],
+    '@typescript-eslint/quotemark': [2, 'single', 'avoid-escape'],
+    '@typescript-eslint/semicolon': [2, 'never'],
+    '@typescript-eslint/trailing-comma': [2],
+    'jsx-quotes': [2, 'prefer-single'],
     // 'sort-imports': [
     //   'error',
     //   {
@@ -36,9 +38,9 @@ module.exports = {
     //   },
     // ],
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  // settings: {
+  //   react: {
+  //     version: 'detect',
+  //   },
+  // },
 }
