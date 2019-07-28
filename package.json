@@ -3,20 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build:parcel:server": "parcel build -t node -d lib src/index.ts",
-    "build": "yarn clean; yarn build:parcel:server",
+    "build": "yarn clean; yarn build:tsc; yarn build:parcel:server",
+    "build:dependencies": "rm -rf node_modules yarn.lock; yarn",
+    "build:parcel": "parcel build -t node -d lib src/index.ts",
+    "build:tsc": "tsc -p .; rm -rf lib/*.js lib/*.jsx",
     "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
-    "lint:eslint": "eslint './**/*.ts'",
-    "lint:fix:eslint": "eslint './**/*.ts' --fix",
-    "lint:fix:prettier": "prettier --write './**/*.ts'",
-    "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
-    "lint:prettier": "prettier --check './**/*.ts'",
-    "lint:typescript": "tsc -p . --noEmit",
     "lint": "yarn lint:typescript; yarn lint:eslint; yarn lint:prettier",
-    "test:watch": "jest  --watchAll",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
+    "lint:fix:eslint": "eslint 'src/**/*.ts' --fix",
+    "lint:fix:prettier": "prettier --write 'src/**/*.ts'",
+    "lint:prettier": "prettier --check 'src/**/*.ts'",
+    "lint:typescript": "tsc -p . --noEmit",
     "test": "jest",
-    "types": "npx typesync; yarn"
+    "types": "npx typesync; yarn",
+    "watch:parcel": "parcel watch -t node -d lib src/index.ts",
+    "watch:test": "jest --watchAll"
   },
   "author": "",
   "license": "ISC",
@@ -39,11 +43,11 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "eslint --fix",
       "git add"
     ],
-    "*.{js,jsx,json,css,md}": [
+    "src/**/*.{js,jsx,json,css,md}": [
       "prettier --write",
       "git add"
     ]
@@ -74,7 +78,7 @@
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "jest-cucumber": "^2.0.11",
-    "lint-staged": "^9.0.2",
+    "lint-staged": "^9.1.0",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-babel-typescript": "^1.0.1",
     "prettier": "^1.18.2",
