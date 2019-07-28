@@ -10,6 +10,7 @@
     "build:parcel": "parcel build -t node -d lib src/index.ts",
     "build:tsc": "tsc -p .; rm -rf lib/*.js lib/*.jsx",
     "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
+    "install:commitizen": "commitizen init cz-emoji --force --yarn --dev --exact",
     "lint": "yarn lint:typescript; yarn lint:eslint; yarn lint:prettier",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
@@ -71,6 +72,7 @@
     "@typescript-eslint/parser": "^1.11.0",
     "babel-plugin-transform-typescript-metadata": "^0.2.2",
     "chai": "^4.2.0",
+    "cz-emoji": "1.1.2",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
@@ -86,5 +88,10 @@
     "sinon": "^7.3.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
   }
 }
