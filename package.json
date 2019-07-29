@@ -5,10 +5,11 @@
   "main": "index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn clean; yarn build:tsc; yarn build:parcel:server",
+    "build": "yarn clean; yarn build:tsc; yarn build:parcel; yarn build:uml",
     "build:dependencies": "rm -rf node_modules yarn.lock; yarn",
     "build:parcel": "parcel build -t node -d lib src/index.ts",
     "build:tsc": "tsc -p .; rm -rf lib/*.js lib/*.jsx",
+    "build:uml": "tplant --input src/**/*.ts src/**/*.tsx --output lib/plantuml.svg",
     "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
     "install:commitizen": "commitizen init cz-emoji --force --yarn --dev --exact",
     "lint": "yarn lint:typescript; yarn lint:eslint; yarn lint:prettier",
@@ -86,6 +87,7 @@
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "sinon": "^7.3.2",
+    "tplant": "^2.3.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   },
