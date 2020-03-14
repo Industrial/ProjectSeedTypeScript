@@ -2,7 +2,7 @@
 .cache
 
 # library code
-lib
+#lib
 node_modules
 
 # generated files
