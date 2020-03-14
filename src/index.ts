@@ -1,3 +1,3 @@
-const add = (a: number, b: number): number => a + b
+import { sum } from './sum'
 
-console.log(add(1, 1))
+console.log(sum(1, 2))
