@@ -11,7 +11,6 @@
     "build:tsc": "tsc -p .; rm -rf lib/*.js lib/*.jsx",
     "build:uml": "tplant --input src/**/*.ts src/**/*.tsx --output lib/plantuml.svg",
     "clean": "rm -rf lib/*; rm -rf .cache/*; mkdir -p .cache; mkdir -p lib",
-    "install:commitizen": "commitizen init cz-emoji --force --yarn --dev --exact",
     "lint": "yarn lint:typescript; yarn lint:eslint; yarn lint:prettier",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:fix": "yarn lint:fix:prettier; yarn lint:fix:eslint",
@@ -91,10 +90,5 @@
     "tplant": "^2.3.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-emoji"
-    }
   }
 }
